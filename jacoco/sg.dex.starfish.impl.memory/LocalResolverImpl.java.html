@@ -18,18 +18,13 @@ import java.util.Map;
 <span class="fc bfc" id="L18" title="All 2 branches covered.">        if (localDDO != null) {</span>
 <span class="fc" id="L19">            return localDDO;</span>
         }
-        try {
-            // TODO: Ocean resolver
-        } catch (Throwable t) {
-            // TODO: logging
-        }
-<span class="fc" id="L26">        return null;</span>
+<span class="fc" id="L21">        return null;</span>
     }
 
     @Override
     public void registerDID(DID did, String ddoString) {
-<span class="fc" id="L31">        installLocalDDO(did, ddoString);</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L26">        installLocalDDO(did, ddoString);</span>
+<span class="fc" id="L27">    }</span>
 
     /**
      * Registers a DID with a DDO in the context of this Ocean connection on the local machine.
@@ -40,10 +35,10 @@ import java.util.Map;
      * @param ddoString A string containing a valid DDO in JSON Format
      */
     private void installLocalDDO(DID did, String ddoString) {
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (did == null) throw new IllegalArgumentException(&quot;DID cannot be null&quot;);</span>
-<span class="fc" id="L44">        did = did.withoutPath();</span>
-<span class="fc" id="L45">        ddoCache.put(did, ddoString);</span>
-<span class="fc" id="L46">    }</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (did == null) throw new IllegalArgumentException(&quot;DID cannot be null&quot;);</span>
+<span class="fc" id="L39">        did = did.withoutPath();</span>
+<span class="fc" id="L40">        ddoCache.put(did, ddoString);</span>
+<span class="fc" id="L41">    }</span>
 
     /**
      * Registers a DID with a DDO in the context of this Ocean connection on the local machine.
@@ -54,8 +49,8 @@ import java.util.Map;
      * @param ddo A Map containing a valid DDO
      */
     public void installLocalDDO(DID did, Map&lt;String, Object&gt; ddo) {
-<span class="nc" id="L57">        installLocalDDO(did, JSON.toPrettyString(ddo));</span>
-<span class="nc" id="L58">    }</span>
+<span class="nc" id="L52">        installLocalDDO(did, JSON.toPrettyString(ddo));</span>
+<span class="nc" id="L53">    }</span>
 
     /**
      * Gets a DDO for a specified DID via the Universal resolver
@@ -64,7 +59,7 @@ import java.util.Map;
      * @return The DDO as a JSON map
      */
     public Map&lt;String, Object&gt; getDDO(String did) {
-<span class="nc" id="L67">        return JSON.parse(getDDOString(did));</span>
+<span class="nc" id="L62">        return JSON.parse(getDDOString(did));</span>
     }
 
     /**
@@ -74,7 +69,7 @@ import java.util.Map;
      * @return The DDO as a JSON map
      */
     public String getDDOString(String did) {
-<span class="nc" id="L77">        return getDDOString(DID.parse(did));</span>
+<span class="nc" id="L72">        return getDDOString(DID.parse(did));</span>
     }
 
 }
