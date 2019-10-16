@@ -2,12 +2,8 @@
 
 import sg.dex.starfish.Job;
 import sg.dex.starfish.Operation;
-import sg.dex.starfish.constant.Constant;
-import sg.dex.starfish.util.JSON;
-import sg.dex.starfish.util.ProvUtil;
 
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -23,34 +19,8 @@ import java.util.concurrent.CompletableFuture;
 public abstract class AMemoryOperation extends AMemoryAsset implements Operation {
 
     protected AMemoryOperation(String metaString, MemoryAgent memoryAgent) {
-<span class="fc" id="L26">        super(getMetaWithProv(metaString,memoryAgent), memoryAgent);</span>
-<span class="fc" id="L27">    }</span>
-
-    /**
-     * Method to add provenace in the metadata if not present for all Memory Operation
-     * @param metaString Metadata as string
-     * @param memoryAgent agent
-     * @return metadata with PROVENANCE
-     */
-    private static String getMetaWithProv(String metaString,MemoryAgent memoryAgent) {
-
-<span class="fc" id="L37">        Map&lt;String,Object&gt; meta = JSON.toMap(metaString);</span>
-        //check if already provenance is present
-
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if(meta.get(Constant.PROVENANCE)== null) {</span>
-            // adding default provenance
-<span class="fc" id="L42">            String actId = UUID.randomUUID().toString();</span>
-            // check if DID is present in agent then agent id will be did
-            // else will create a random UUID
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">            String agentId = memoryAgent.getDID()!=null?</span>
-<span class="fc" id="L46">                    memoryAgent.getDID().toString():</span>
-<span class="pc" id="L47">                    UUID.randomUUID().toString();</span>
-
-<span class="fc" id="L49">            Map&lt;String, Object&gt; provenanceData = ProvUtil.createPublishProvenance(actId, agentId);</span>
-<span class="fc" id="L50">            meta.put(Constant.PROVENANCE, provenanceData);</span>
-        }
-<span class="fc" id="L52">        return JSON.toPrettyString(meta);</span>
-    }
+<span class="fc" id="L22">        super(metaString, memoryAgent);</span>
+<span class="fc" id="L23">    }</span>
 
     @Override
     public Job invokeAsync(Map&lt;String, Object&gt; params) {
@@ -59,29 +29,29 @@ public abstract class AMemoryOperation extends AMemoryAsset implements Operation
         // Implementations may override this for custom behaviour (e.g. a custom thread
         // pool)
         // But this should be sufficient for most cases.
-<span class="fc" id="L62">        final CompletableFuture&lt;Map&lt;String, Object&gt;&gt; future = new CompletableFuture&lt;&gt;();</span>
-<span class="fc" id="L63">        MemoryJob memoryJob = MemoryJob.create(future);</span>
-<span class="fc" id="L64">        MemoryAgent.THREAD_POOL.submit(() -&gt; {</span>
+<span class="fc" id="L32">        final CompletableFuture&lt;Map&lt;String, Object&gt;&gt; future = new CompletableFuture&lt;&gt;();</span>
+<span class="fc" id="L33">        MemoryJob memoryJob = MemoryJob.create(future);</span>
+<span class="fc" id="L34">        MemoryAgent.THREAD_POOL.submit(() -&gt; {</span>
             try {
-<span class="fc" id="L66">                Map&lt;String, Object&gt; result = compute(params);</span>
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">                if (future.complete(result)) {</span>
+<span class="fc" id="L36">                Map&lt;String, Object&gt; result = compute(params);</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">                if (future.complete(result)) {</span>
                 }
-<span class="fc" id="L69">            } catch (Throwable t) {</span>
-<span class="fc" id="L70">                future.completeExceptionally(t);</span>
-<span class="fc" id="L71">            }</span>
-<span class="fc" id="L72">        });</span>
+<span class="fc" id="L39">            } catch (Throwable t) {</span>
+<span class="fc" id="L40">                future.completeExceptionally(t);</span>
+<span class="fc" id="L41">            }</span>
+<span class="fc" id="L42">        });</span>
 
-<span class="fc" id="L74">        return memoryJob;</span>
+<span class="fc" id="L44">        return memoryJob;</span>
     }
 
     @Override
     public final Map&lt;String, Object&gt; invokeResult(Map&lt;String, Object&gt; params) {
-<span class="fc" id="L79">        return compute(params);</span>
+<span class="fc" id="L49">        return compute(params);</span>
     }
 
     @Override
     public Job invoke(Map&lt;String, Object&gt; params) {
-<span class="nc" id="L84">        return invokeAsync(params);</span>
+<span class="nc" id="L54">        return invokeAsync(params);</span>
     }
 
     /**
