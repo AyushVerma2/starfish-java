@@ -37,7 +37,7 @@ Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,HTTP,100,5
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,ProvUtil,271,381,6,2,50,69,10,14,7,13
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,RemoteAgentConfig,7,53,2,2,1,12,3,2,1,2
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,ProvUtil.AgentIdType,0,24,0,0,0,2,0,1,0,1
-Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,Hex,36,186,6,20,6,24,8,13,3,5
+Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,Hex,31,191,6,20,5,25,7,14,2,6
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,JSON,25,225,0,14,5,56,1,14,1,7
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,ProvUtil.ActivityType,0,34,0,0,0,2,0,1,0,1
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,Utils,198,234,39,25,36,57,32,18,5,13
