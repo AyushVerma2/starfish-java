@@ -13,10 +13,10 @@ Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish,Operation,75,2,
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish,Asset,28,44,0,2,4,9,2,4,2,3
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish,Bundle,25,2,0,0,4,1,2,1,2,1
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish,DataAsset,15,53,3,5,3,12,4,5,1,4
-Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish,Job,48,19,2,0,14,5,7,4,6,4
+Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish,Job,49,18,2,0,15,4,7,4,6,4
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AAgent,29,34,3,3,4,11,4,5,2,4
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AEVMAccount,13,0,0,0,4,0,2,0,2,0
-Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AListing,0,3,0,0,0,1,0,1,0,1
+Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AListing,3,0,0,0,1,0,1,0,1,0
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AAccount,81,28,3,1,18,7,5,4,3,4
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AIdentity,25,0,0,0,8,0,4,0,4,0
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl,AAsset,50,24,2,0,9,8,4,5,3,5
@@ -25,7 +25,7 @@ Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl.file,FileA
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl.resource,URIAsset,71,97,2,6,11,24,6,8,4,6
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.impl.resource,ResourceAsset,50,71,4,2,6,18,3,9,0,9
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.exception,StarfishValidationException,0,9,0,0,0,4,0,2,0,2
-Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.exception,RemoteException,0,9,0,0,0,4,0,2,0,2
+Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.exception,RemoteException,5,4,0,0,2,2,1,1,1,1
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.exception,GenericException,9,0,0,0,4,0,2,0,2,0
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.exception,JobFailedException,5,0,0,0,2,0,1,0,1,0
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.exception,ResolverException,7,0,0,0,4,0,2,0,2,0
@@ -36,7 +36,7 @@ Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,JSONObject
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,DID,41,261,10,14,3,60,10,21,0,19
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,HTTP,100,57,2,0,23,18,3,6,2,6
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,ProvUtil,10,642,1,7,3,116,3,21,2,18
-Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,RemoteAgentConfig,7,53,2,2,1,12,3,2,1,2
+Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,RemoteAgentConfig,12,53,2,2,2,12,4,2,2,2
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,ProvUtil.AgentIdType,0,24,0,0,0,2,0,1,0,1
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,Hex,41,186,6,20,7,24,9,13,4,5
 Starfish - Developer Toolkit for data ecosystems,sg.dex.starfish.util,JSON,25,225,0,14,5,56,1,14,1,7
