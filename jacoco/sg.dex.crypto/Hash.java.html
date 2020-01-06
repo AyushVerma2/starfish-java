@@ -2,6 +2,7 @@
 
 import org.bouncycastle.jcajce.provider.digest.Keccak;
 import org.bouncycastle.jcajce.provider.digest.SHA3;
+import sg.dex.starfish.exception.StarfishValidationException;
 import sg.dex.starfish.util.Hex;
 
 import java.io.IOException;
@@ -15,8 +16,8 @@ import java.security.DigestException;
  *
  * @author Mike
  */
-<span class="pc bpc" id="L18" title="1 of 2 branches missed.">public class Hash {</span>
-<span class="fc" id="L19">    public static final byte[] EMPTY_BYTES_SHA3 = sha3_256(new byte[0]);</span>
+<span class="nc" id="L19">public class Hash {</span>
+<span class="fc" id="L20">    public static final byte[] EMPTY_BYTES_SHA3 = sha3_256(new byte[0]);</span>
 
     /**
      * Compute the Keccak256 hash of byte array segment
@@ -27,9 +28,9 @@ import java.security.DigestException;
      * @return byte[]
      */
     public static byte[] keccak256(byte[] data, int offset, int length) {
-<span class="fc" id="L30">        Keccak.DigestKeccak keccak = new Keccak.Digest256();</span>
-<span class="fc" id="L31">        keccak.update(data, offset, length);</span>
-<span class="fc" id="L32">        return keccak.digest();</span>
+<span class="fc" id="L31">        Keccak.DigestKeccak keccak = new Keccak.Digest256();</span>
+<span class="fc" id="L32">        keccak.update(data, offset, length);</span>
+<span class="fc" id="L33">        return keccak.digest();</span>
     }
 
     /**
@@ -41,10 +42,10 @@ import java.security.DigestException;
      * @return byte[]
      */
     public static byte[] sha3_256(byte[] data, int offset, int length) {
-<span class="fc" id="L44">        SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
-<span class="fc" id="L45">        md.update(data, offset, length);</span>
-<span class="fc" id="L46">        final byte[] result = md.digest();</span>
-<span class="fc" id="L47">        return result;</span>
+<span class="fc" id="L45">        SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
+<span class="fc" id="L46">        md.update(data, offset, length);</span>
+<span class="fc" id="L47">        final byte[] result = md.digest();</span>
+<span class="fc" id="L48">        return result;</span>
     }
 
     /**
@@ -54,7 +55,7 @@ import java.security.DigestException;
      * @return byte[]
      */
     public static byte[] keccak256(byte[] data) {
-<span class="fc" id="L57">        return keccak256(data, 0, data.length);</span>
+<span class="fc" id="L58">        return keccak256(data, 0, data.length);</span>
     }
 
     /**
@@ -64,7 +65,7 @@ import java.security.DigestException;
      * @return byte[]
      */
     public static byte[] sha3_256(byte[] data) {
-<span class="fc" id="L67">        return sha3_256(data, 0, data.length);</span>
+<span class="fc" id="L68">        return sha3_256(data, 0, data.length);</span>
     }
 
     /**
@@ -74,7 +75,7 @@ import java.security.DigestException;
      * @return byte[]
      */
     public static byte[] keccak256(String string) {
-<span class="fc" id="L77">        return keccak256(string.getBytes(StandardCharsets.UTF_8));</span>
+<span class="fc" id="L78">        return keccak256(string.getBytes(StandardCharsets.UTF_8));</span>
     }
 
     /**
@@ -84,7 +85,7 @@ import java.security.DigestException;
      * @return byte[]
      */
     public static byte[] sha3_256(String string) {
-<span class="fc" id="L87">        return sha3_256(string.getBytes(StandardCharsets.UTF_8));</span>
+<span class="fc" id="L88">        return sha3_256(string.getBytes(StandardCharsets.UTF_8));</span>
     }
 
     /**
@@ -94,7 +95,7 @@ import java.security.DigestException;
      * @return Keccak256 hash as a hex string
      */
     public static String keccak256String(String string) {
-<span class="nc" id="L97">        return Hex.toString(keccak256(string));</span>
+<span class="nc" id="L98">        return Hex.toString(keccak256(string));</span>
     }
 
     /**
@@ -104,7 +105,7 @@ import java.security.DigestException;
      * @return Keccak256 hash as a hex string
      */
     public static String keccak256String(byte[] data) {
-<span class="nc" id="L107">        return Hex.toString(keccak256(data));</span>
+<span class="nc" id="L108">        return Hex.toString(keccak256(data));</span>
     }
 
     /**
@@ -114,7 +115,7 @@ import java.security.DigestException;
      * @return sha3_256 hash as a hex string
      */
     public static String sha3_256String(byte[] data) {
-<span class="fc" id="L117">        return Hex.toString(sha3_256(data));</span>
+<span class="fc" id="L118">        return Hex.toString(sha3_256(data));</span>
     }
 
     /**
@@ -124,7 +125,7 @@ import java.security.DigestException;
      * @return sha3_256 hash as a hex string
      */
     public static String sha3_256String(String string) {
-<span class="fc" id="L127">        return Hex.toString(sha3_256(string));</span>
+<span class="fc" id="L128">        return Hex.toString(sha3_256(string));</span>
     }
 
     /**
@@ -135,27 +136,29 @@ import java.security.DigestException;
      * Once all the data to be updated has been updated, one of the digest
      * methods should be called to complete the hash computation.
      *
-     * @param inputStream
-     * @return
+     * @param inputStream for which the compute is to be performed
+     * @return compute hash value
      */
-    public static String checkSum(InputStream inputStream) throws DigestException {
-<span class="fc" id="L142">        String checksum = null;</span>
+    public static String computeHashWithSHA3(InputStream inputStream) throws IOException {
+        String checksum;
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if(null==inputStream){</span>
+<span class="nc" id="L145">            throw new IOException(&quot;Asset content passed is  null&quot;);</span>
+        }
         try {
 
-<span class="fc" id="L145">            SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
+<span class="fc" id="L149">            SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
             //Using MessageDigest update() method to provide input
-<span class="fc" id="L147">            byte[] buffer = new byte[8192];</span>
+<span class="fc" id="L151">            byte[] buffer = new byte[8192];</span>
             int numOfBytesRead;
-<span class="fc bfc" id="L149" title="All 2 branches covered.">            while ((numOfBytesRead = inputStream.read(buffer)) &gt; 0) {</span>
-<span class="fc" id="L150">                md.update(buffer, 0, numOfBytesRead);</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">            while ((numOfBytesRead = inputStream.read(buffer)) &gt; 0) {</span>
+<span class="fc" id="L154">                md.update(buffer, 0, numOfBytesRead);</span>
             }
-<span class="fc" id="L152">            byte[] hash = md.digest();</span>
-<span class="fc" id="L153">            checksum = new BigInteger(1, hash).toString(16); //don't use this, truncates leading zero</span>
-<span class="nc" id="L154">        } catch (IOException e) {</span>
-<span class="nc" id="L155">            throw new DigestException(&quot;couldn't make digest of partial content&quot;);</span>
-<span class="fc" id="L156">        }</span>
-<span class="pc bpc" id="L157" title="2 of 4 branches missed.">        assert checksum != null;</span>
-<span class="fc" id="L158">        return checksum.trim();</span>
+<span class="fc" id="L156">            byte[] hash = md.digest();</span>
+<span class="fc" id="L157">            checksum =  Hex.toString(hash);</span>
+<span class="nc" id="L158">        } catch (IOException e) {</span>
+<span class="nc" id="L159">            throw new IOException(&quot;Couldn't compute the hash  of partial content&quot;);</span>
+<span class="fc" id="L160">        }</span>
+<span class="fc" id="L161">        return checksum;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
