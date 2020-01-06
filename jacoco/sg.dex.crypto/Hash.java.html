@@ -139,23 +139,20 @@ import java.security.DigestException;
      * @param inputStream for which the compute is to be performed
      * @return compute hash value
      */
-    public static String computeHashWithSHA3(InputStream inputStream) throws IOException {
+    public static String sha3_256String(InputStream inputStream) throws IOException {
         String checksum;
-<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if(null==inputStream){</span>
-<span class="nc" id="L145">            throw new IOException(&quot;Asset content passed is  null&quot;);</span>
-        }
 
-<span class="fc" id="L148">            SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
+<span class="fc" id="L145">            SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
             //Using MessageDigest update() method to provide input
-<span class="fc" id="L150">            byte[] buffer = new byte[8192];</span>
+<span class="fc" id="L147">            byte[] buffer = new byte[8192];</span>
             int numOfBytesRead;
-<span class="fc bfc" id="L152" title="All 2 branches covered.">            while ((numOfBytesRead = inputStream.read(buffer)) &gt; 0) {</span>
-<span class="fc" id="L153">                md.update(buffer, 0, numOfBytesRead);</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">            while ((numOfBytesRead = inputStream.read(buffer)) &gt; 0) {</span>
+<span class="fc" id="L150">                md.update(buffer, 0, numOfBytesRead);</span>
             }
-<span class="fc" id="L155">            byte[] hash = md.digest();</span>
-<span class="fc" id="L156">            checksum =  Hex.toString(hash);</span>
+<span class="fc" id="L152">            byte[] hash = md.digest();</span>
+<span class="fc" id="L153">            checksum =  Hex.toString(hash);</span>
 
-<span class="fc" id="L158">        return checksum;</span>
+<span class="fc" id="L155">        return checksum;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
