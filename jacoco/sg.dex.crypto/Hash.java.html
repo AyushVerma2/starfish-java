@@ -144,21 +144,18 @@ import java.security.DigestException;
 <span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if(null==inputStream){</span>
 <span class="nc" id="L145">            throw new IOException(&quot;Asset content passed is  null&quot;);</span>
         }
-        try {
 
-<span class="fc" id="L149">            SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
+<span class="fc" id="L148">            SHA3.DigestSHA3 md = new SHA3.Digest256();</span>
             //Using MessageDigest update() method to provide input
-<span class="fc" id="L151">            byte[] buffer = new byte[8192];</span>
+<span class="fc" id="L150">            byte[] buffer = new byte[8192];</span>
             int numOfBytesRead;
-<span class="fc bfc" id="L153" title="All 2 branches covered.">            while ((numOfBytesRead = inputStream.read(buffer)) &gt; 0) {</span>
-<span class="fc" id="L154">                md.update(buffer, 0, numOfBytesRead);</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">            while ((numOfBytesRead = inputStream.read(buffer)) &gt; 0) {</span>
+<span class="fc" id="L153">                md.update(buffer, 0, numOfBytesRead);</span>
             }
-<span class="fc" id="L156">            byte[] hash = md.digest();</span>
-<span class="fc" id="L157">            checksum =  Hex.toString(hash);</span>
-<span class="nc" id="L158">        } catch (IOException e) {</span>
-<span class="nc" id="L159">            throw new IOException(&quot;Couldn't compute the hash  of partial content&quot;);</span>
-<span class="fc" id="L160">        }</span>
-<span class="fc" id="L161">        return checksum;</span>
+<span class="fc" id="L155">            byte[] hash = md.digest();</span>
+<span class="fc" id="L156">            checksum =  Hex.toString(hash);</span>
+
+<span class="fc" id="L158">        return checksum;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
