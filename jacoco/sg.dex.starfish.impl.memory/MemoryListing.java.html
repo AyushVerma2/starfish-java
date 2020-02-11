@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoryListing.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Starfish - Developer Toolkit for data ecosystems</a> &gt; <a href="index.source.html" class="el_package">sg.dex.starfish.impl.memory</a> &gt; <span class="el_source">MemoryListing.java</span></div><h1>MemoryListing.java</h1><pre class="source lang-java linenums">package sg.dex.starfish.impl.memory;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemoryListing.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Starfish - client library for data ecosystems</a> &gt; <a href="index.source.html" class="el_package">sg.dex.starfish.impl.memory</a> &gt; <span class="el_source">MemoryListing.java</span></div><h1>MemoryListing.java</h1><pre class="source lang-java linenums">package sg.dex.starfish.impl.memory;
 
 import sg.dex.starfish.Account;
 import sg.dex.starfish.Asset;
@@ -20,11 +20,11 @@ public class MemoryListing implements Listing {
     private final String id;
     private MemoryAgent agent;
 
-<span class="fc" id="L23">    private MemoryListing(MemoryAgent agent, String listingID, Map&lt;String, Object&gt; metaMap) {</span>
-<span class="fc" id="L24">        this.agent = agent;</span>
-<span class="fc" id="L25">        this.meta = metaMap;</span>
-<span class="fc" id="L26">        this.id = listingID;</span>
-<span class="fc" id="L27">    }</span>
+<span class="nc" id="L23">    private MemoryListing(MemoryAgent agent, String listingID, Map&lt;String, Object&gt; metaMap) {</span>
+<span class="nc" id="L24">        this.agent = agent;</span>
+<span class="nc" id="L25">        this.meta = metaMap;</span>
+<span class="nc" id="L26">        this.id = listingID;</span>
+<span class="nc" id="L27">    }</span>
 
     /**
      * API will create the listing instance based on the metaMap data passed.
@@ -34,9 +34,9 @@ public class MemoryListing implements Listing {
      * @return The new Listing
      */
     public static MemoryListing create(MemoryAgent agent, Map&lt;String, Object&gt; metaMap) {
-<span class="fc" id="L37">        String listingID = metaMap.get(ID).toString();</span>
+<span class="nc" id="L37">        String listingID = metaMap.get(ID).toString();</span>
 
-<span class="fc" id="L39">        return new MemoryListing(agent, listingID, metaMap);</span>
+<span class="nc" id="L39">        return new MemoryListing(agent, listingID, metaMap);</span>
     }
 
 
@@ -63,7 +63,7 @@ public class MemoryListing implements Listing {
 
     @Override
     public Map&lt;String, Object&gt; getMetaData() {
-<span class="fc" id="L66">        return meta;</span>
+<span class="nc" id="L66">        return meta;</span>
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MemoryListing implements Listing {
 
     @Override
     public String getAssetID() {
-<span class="fc" id="L81">        return getMetaData().get(&quot;assetid&quot;).toString();</span>
+<span class="nc" id="L81">        return getMetaData().get(&quot;assetid&quot;).toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
