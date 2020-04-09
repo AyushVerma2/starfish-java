@@ -194,8 +194,9 @@ public class MemoryAsset extends AMemoryAsset implements DataAsset {
      */
     @Override
     public InputStream getContentStream() {
-<span class="pc bpc" id="L197" title="1 of 2 branches missed.">        if (data == null) throw new Error(&quot;MemoryAsset has not been initialised with data&quot;);</span>
-<span class="fc" id="L198">        return new ByteArrayInputStream(data);</span>
+<span class="pc bpc" id="L197" title="1 of 2 branches missed.">        if (data == null)</span>
+<span class="nc" id="L198">            throw new Error(&quot;MemoryAsset has not been initialised with data&quot;);</span>
+<span class="fc" id="L199">        return new ByteArrayInputStream(data);</span>
     }
 
     /**
@@ -208,31 +209,31 @@ public class MemoryAsset extends AMemoryAsset implements DataAsset {
     @Override
     public byte[] getContent() {
         // we take a copy of data to protected immutability of MemoryAsset instance
-<span class="pc bpc" id="L211" title="1 of 2 branches missed.">        return null != data ? data.clone() : null;</span>
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">        return null != data ? data.clone() : null;</span>
     }
 
 
     @Override
     public Map&lt;String, Object&gt; getParamValue() {
-<span class="nc" id="L217">        Map&lt;String, Object&gt; o = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L218">        Map&lt;String, Object&gt; o = new HashMap&lt;&gt;();</span>
         // pass the asset ID, i.e. hash of content
-<span class="nc" id="L219">        o.put(ID, getAssetID());</span>
-<span class="nc" id="L220">        return o;</span>
+<span class="nc" id="L220">        o.put(ID, getAssetID());</span>
+<span class="nc" id="L221">        return o;</span>
     }
 
     @Override
     public long getContentSize() {
-<span class="nc bnc" id="L225" title="All 2 branches missed.">        return this.data != null ? this.data.length : -1;</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">        return this.data != null ? this.data.length : -1;</span>
     }
 
 
     public byte[] getSource() {
-<span class="nc" id="L230">        return data;</span>
+<span class="nc" id="L231">        return data;</span>
     }
 
     @Override
     public DataAsset updateMeta(String newMeta) {
-<span class="nc" id="L235">        return new MemoryAsset(this.getSource(), newMeta, MemoryAgent.create());</span>
+<span class="nc" id="L236">        return new MemoryAsset(this.getSource(), newMeta, MemoryAgent.create());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
