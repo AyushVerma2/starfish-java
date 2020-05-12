@@ -42,7 +42,8 @@ public class AgentService {
                 ":599dce2c6e27294bdfa60df9c9e1705af20fd589704801904b972b0399f9592e");
 
         resolver.registerDID(didSurfer, getDDO(ConnectionStatus.getSurferUrl()));
-        resolver.registerDID(didSurfer, getDDO(ConnectionStatus.getNemoUrl()));
+        //resolver.registerDID(didSurfer, getDDO(ConnectionStatus.getNemoUrl
+        // ()));
 
         remoteAccount = RemoteAccount.create(username, password);
 
