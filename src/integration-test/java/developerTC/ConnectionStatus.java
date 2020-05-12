@@ -11,6 +11,7 @@ import java.util.Properties;
 public class ConnectionStatus {
 
     private static String surferUrl;
+    private static String nemoUrl;
     private static Properties properties;
 
     static {
@@ -18,6 +19,10 @@ public class ConnectionStatus {
         String ip = properties.getProperty("surfer.host");
         String port = properties.getProperty("surfer.port");
         surferUrl = (StringUtils.isBlank(port)) ? ip : (ip + ":" + port);
+
+        String nemoIP = properties.getProperty("nemo.host");
+        String nemoPort = properties.getProperty("nemo.port");
+        nemoUrl = nemoIP + ":" + nemoPort;
     }
 
     public static String getSurferUrl() {
@@ -61,5 +66,9 @@ public class ConnectionStatus {
             e.printStackTrace();
         }
         return properties;
+    }
+
+    public static String getNemoUrl() {
+        return nemoUrl;
     }
 }

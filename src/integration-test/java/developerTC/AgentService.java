@@ -20,6 +20,7 @@ import java.util.*;
 public class AgentService {
 
     private static RemoteAgent surfer;
+    private static RemoteAgent nemo;
 
     private static String username;
     private static String password;
@@ -37,12 +38,16 @@ public class AgentService {
 
         Resolver resolver = DexResolver.create();
         DID didSurfer = DID.parse("did:dep:599dce2c6e27294bdfa60df9c9e1705af20fd589704801904b972b0399f9592e");
+        DID nemoDID = DID.parse("did:dep" +
+                ":599dce2c6e27294bdfa60df9c9e1705af20fd589704801904b972b0399f9592e");
 
         resolver.registerDID(didSurfer, getDDO(ConnectionStatus.getSurferUrl()));
+        resolver.registerDID(didSurfer, getDDO(ConnectionStatus.getNemoUrl()));
 
         remoteAccount = RemoteAccount.create(username, password);
 
         surfer = RemoteAgent.connect(resolver, didSurfer, remoteAccount);
+        nemo = RemoteAgent.connect(resolver, nemoDID, remoteAccount);
 
     }
 
@@ -83,6 +88,11 @@ public class AgentService {
      * @return The RemoteAgent, or null if not up
      */
     public static RemoteAgent getRemoteAgent() {
+        return surfer;
+
+    }
+
+    public static RemoteAgent getNemoAgent() {
         return surfer;
 
     }
